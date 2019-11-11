@@ -237,6 +237,7 @@ id查询
 --------
 ::
   curl -XGET http://router_server/$db_name/$space_name/$id
+ 
 
 批量查询
 --------
