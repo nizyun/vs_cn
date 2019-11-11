@@ -8,7 +8,7 @@ http://master_server代表master服务
 
 ::
 
-   curl -XGET http://master_server/_cluster/stats
+  curl -XGET http://master_server/_cluster/stats
 
 
 健康状态
@@ -16,7 +16,7 @@ http://master_server代表master服务
 
 ::
 
-   curl -XGET http://master_server/_cluster/health
+  curl -XGET http://master_server/_cluster/health
 
 
 端口状态
@@ -24,6 +24,6 @@ http://master_server代表master服务
 
 ::
 
-   curl -XGET http://master_server/list/server
+  curl -XGET http://master_server/list/server
    
 
