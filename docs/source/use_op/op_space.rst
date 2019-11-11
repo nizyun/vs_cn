@@ -76,7 +76,7 @@ http://master_server代表master服务，$db_name是创建的库名, $space_name
 |properties   |空间配置       |json           |是        |定义表字段及类型 |
 +-------------+---------------+---------------+----------+-----------------+
 
-1、name 不能为空，不能以数字或下划线开头， 尽量不使用特殊字符等。
+1、name 不能为空，不能以数字或下划线开头，尽量不使用特殊字符等。
 
 2、partition_num 指定表空间数据分片数量，不同的分片可分布在不同的机器，来避免单台机器的资源限制。
 
@@ -103,23 +103,23 @@ engine配置:
 +-------------+---------------+---------------+----------+---------------------------+
 
 
-1、index_size 指定每个分片的记录数量达到多少开始创建索引，不指定则不创建索引
+1、index_size 指定每个分片的记录数量达到多少开始创建索引，不指定则不创建索引。
 
-2、max_size  指定每个分片最多存储的记录数量，防止服务器内存占用过多
+2、max_size  指定每个分片最多存储的记录数量，防止服务器内存占用过多。
 
-3、nprobe    指定在索引中搜索的桶的数量，不能大于ncentroids的值
+3、nprobe    指定在索引中搜索的桶的数量，不能大于ncentroids的值。
 
-4、metric_type 指定计算方式，内积或L2
+4、metric_type 指定计算方式，内积或L2。
 
-5、ncentroids  指定建索引时分桶的数量
+5、ncentroids  指定建索引时分桶的数量。
 
-6、nsubvector  PQ子向量数量
+6、nsubvector  PQ子向量数量。
 
 properties配置:
 
-1、表空间结构定义字段支持的类型(即type的值)有4种: keyword, integer, float, vector (keyword等价于string)
+1、表空间结构定义字段支持的类型(即type的值)有4种: keyword，integer，float，vector(keyword等价于string)。
 
-2、keyword, integer, float类型的字段支持index、array属性，index定义是否创建索引，array指定是否允许多个值。
+2、keyword，integer，float类型的字段支持index、array属性，index定义是否创建索引，array指定是否允许多个值。
 
 3、vector 类型字段为特征字段，一个表空间中支持多个特征字段，vector类型的字段支持的属性如下:
 
@@ -137,7 +137,7 @@ properties配置:
 
 4、dimension 定义type是vector的字段，指定特征维数大小。
 
-5、store_param 定义存储相关参数，目前支持cache_size即该字段数据占用内存大小, 默认是2G，若特征总量超过cache_size大小，则超出的部分存储在磁盘,cache_size值需大于0小于1024*1024，单位M, 多个特征字段之间该参数相互不影响。 示例: "store_param": {"cache_size": 2000}, 定义该特征字段的存储最多使用2000M内存。
+5、store_param 定义存储相关参数，目前支持cache_size即该字段数据占用内存大小，默认是2G，若特征总量超过cache_size大小，则超出的部分存储在磁盘，cache_size值需大于0小于1024*1024，单位M，多个特征字段之间该参数相互不影响。 示例: "store_param": {"cache_size": 2000}，定义该特征字段的存储最多使用2000M内存。
 
 
 查看表空间

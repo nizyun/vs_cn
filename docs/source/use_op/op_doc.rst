@@ -8,6 +8,7 @@ http://router_server 代表router服务，$db_name是创建的库名, $space_nam
 
 插入时不指定唯一标识id
 ::
+
   curl -XPOST -H "content-type: application/json"  -d'
   {
       "field1": "value1",
@@ -18,10 +19,11 @@ http://router_server 代表router服务，$db_name是创建的库名, $space_nam
   }
   ' http://router_server/$db_name/$space_name
 
-field1 和 field2 是标量字段， field3是特征字段。所有字段名、值类型和定义表结构时保持一致。
+field1和field2是标量字段，field3是特征字段。所有字段名、值类型和定义表结构时保持一致。
 
 返回值格式如下:
 ::
+
   {
       "_index": "db1",
       "_type": "space1",
@@ -38,11 +40,12 @@ field1 和 field2 是标量字段， field3是特征字段。所有字段名、�
       "_primary_term": 1
   }
 
-其中_index 库名称;  _type 表空间名称;  _id 是服务端生成的记录唯一标识，可以由用户指定，对数据的修改和删除需要使用该唯一标识。
+其中_index 库名称， _type 表空间名称，_id 是服务端生成的记录唯一标识，可以由用户指定，对数据的修改和删除需要使用该唯一标识。
 
 
 插入时指定唯一标识
 ::
+
   curl -XPOST -H "content-type: application/json"  -d'
   {
       "field1": "value1",
@@ -75,6 +78,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 --------
 更新时必须指定唯一标识id
 ::
+
   curl -H "content-type: application/json" -XPOST -d'
   {
       "doc": {
@@ -83,7 +87,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
   }
   ' http://router_server/$db_name/$space_name/$id/_update
 
-请求路径中指定唯一标识$id，field是要修改的字段，向量字段的修改使用指定id插入的方式进行数据覆盖更新。   
+请求路径中指定唯一标识$id，field是要修改的字段，向量字段的修改使用指定id插入的方式进行数据覆盖更新。
 
 
 删除
@@ -96,6 +100,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
 根据查询过滤结果删除数据
 ::
+
   curl -H "content-type: application/json" -XPOST -d'
   {
       "query": {
@@ -110,6 +115,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 --------
 查询示例
 ::
+
   curl -H "content-type: application/json" -XPOST -d'
   {
       "query": {
@@ -145,6 +151,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
 查询参数整体json结构如下:
 ::
+
   {
       "query": {
           "sum": [],
@@ -180,6 +187,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
 1 sum json结构说明:
 ::
+
   "sum": [{
             "field": "field_name",
             "feature": [0.1, 0.2, 0.3, 0.4, 0.5],
@@ -188,18 +196,19 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
          }]
 
 
-(1) sum 支持多个(对应定义表结构时包含多个特征字段)
+(1) sum 支持多个(对应定义表结构时包含多个特征字段)。
 
-(2) field 指定创建表时特征字段的名称
+(2) field 指定创建表时特征字段的名称。
 
-(3) feature 传递特征，维数和定义表结构时维数必须相同
+(3) feature 传递特征，维数和定义表结构时维数必须相同。
 
-(4) min_score 指定返回结果中分值必须大于等于0.9，两个向量计算结果相似度在0-1之间， min_score可以指定返回结果分值最小值，max_score可以指定最大值。如设置： “min_score”: 0.8, “max_score”: 0.95  代表过滤0.8<= 分值<= 0.95 的结果。同时另外一种分值过滤的方式是使用: "symbol":">=", "value":0.9 这种组合方式，symbol支持的值类型包含: > 、 >= 、 <、 <=  4种。value及min_score、max_score值在0到1之间。
+(4) min_score 指定返回结果中分值必须大于等于0.9，两个向量计算结果相似度在0-1之间，min_score可以指定返回结果分值最小值，max_score可以指定最大值。如设置： “min_score”: 0.8，“max_score”: 0.95  代表过滤0.8<= 分值<= 0.95 的结果。同时另外一种分值过滤的方式是使用: "symbol":">="，"value":0.9 这种组合方式，symbol支持的值类型包含: > 、 >= 、 <、 <=  4种，value及min_score、max_score值在0到1之间。
 
-(5) boost指定相似度的权重,比如两个向量相似度分值是0.7,boost设置成0.5之后,返回的结果中会将分值0.7乘以0.5即0.35。
+(5) boost指定相似度的权重，比如两个向量相似度分值是0.7，boost设置成0.5之后,返回的结果中会将分值0.7乘以0.5即0.35。
 
 2 filter json结构说明:
 ::
+
   "filter": [
                {
                    "range": {
@@ -263,6 +272,7 @@ id查询
 --------
 表空间定义时支持多个特征字段，因此查询时可以支持相应数据的特征进行查询。以每条记录两个向量为例：定义表结构字段
 ::
+
   {
       "field1": {
           "type": "vector",
@@ -275,8 +285,9 @@ id查询
   }
 
 
-field1、 field2均为向量字段，查询时搜索条件可以指定两个向量：
+field1、field2均为向量字段，查询时搜索条件可以指定两个向量：
 ::
+
   {
       "query": {
           "sum": [{
@@ -293,5 +304,5 @@ field1、 field2均为向量字段，查询时搜索条件可以指定两个向�
   }
 
 
-field1和field2过滤的结果求交集。其他参数及请求地址和普通查询一致。 
+field1和field2过滤的结果求交集，其他参数及请求地址和普通查询一致。 
 

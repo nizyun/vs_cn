@@ -6,7 +6,6 @@ http://master_server代表master服务，$db_name是创建的库名
 查看集群中所有库
 --------
 
-
 ::
 
    curl -XGET http://master_server/list/db
