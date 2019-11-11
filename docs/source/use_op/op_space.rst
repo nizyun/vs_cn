@@ -49,7 +49,11 @@ http://master_server代表master服务，$db_name是创建的库名, $space_name
           },
           "field7": {
               "type": "vector",
-              "dimension": 256
+              "dimension": 256,
+              "store_type": "Mmap",
+              "store_param": {
+                  "cache_size": 2000
+              }
           }
       }
   }

@@ -59,7 +59,6 @@ $id 是插入数据时使用指定的值替换服务端生成的唯一标识，$
 
 批量插入
 --------
-
 ::
   curl -H "content-type: application/json" -XPOST -d'
   {"index": {"_id": "v1"}}\n
@@ -233,4 +232,64 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
 7 size 指定最多返回的结果数量。若请求url中设置了size值http://router_server/$db_name/$space_name/_search?size=20优先使用url中指定的size值。
 
+
+id查询
+--------
+
+::
+  curl -XGET http://router_server/$db_name/$space_name/$id
+
+批量查询
+--------
+
+::
+  curl -H "content-type: application/json" -XPOST -d'
+  {
+      "query": {
+          "sum": [{
+              "field": "vector_field_name",
+              "feature": [0.1, 0.2]
+          }]
+      }
+  }
+  ' http://router_server/$db_name/$space_name/_msearch
+
+批量查询和单条查询的区别在于将批量的特征按顺序拼接成一个特征数组，后台服务会按照定义表空间结构时特征维数进行拆分。比如定义10维的特征字段，批量50条进行查询，将特征按顺序拼接成500维的数组赋值给feature参数。请求后缀使用_msearch。
+
+
+多向量查询
+--------
+表空间定义时支持多个特征字段，因此查询时可以支持相应数据的特征进行查询。以每条记录两个向量为例：定义表结构字段
+::
+  {
+      "field1": {
+          "type": "vector",
+          "dimension": 128
+      },
+      "field2": {
+          "type": "vector",
+          "dimension": 256
+      } 
+  }
+
+
+field1、 field2均为向量字段，查询时搜索条件可以指定两个向量：
+::
+  {
+      "query": {
+          "sum": [{
+              "field": "filed1",
+              "feature": [0.1, 0.2, 0.3, 0.4, 0.5],
+              "min_score": 0.9
+          },
+          {
+              "field": "filed2",
+              "feature": [0.8, 0.9],
+              "min_score": 0.8
+          }]
+      }
+  }
+
+
+field1和field2过滤的结果求交集。其他参数及请求地址和普通查询一致。 
 
