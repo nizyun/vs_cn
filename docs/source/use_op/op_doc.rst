@@ -235,13 +235,11 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
 id查询
 --------
-
 ::
   curl -XGET http://router_server/$db_name/$space_name/$id
 
 批量查询
 --------
-
 ::
   curl -H "content-type: application/json" -XPOST -d'
   {
