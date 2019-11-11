@@ -59,6 +59,7 @@ $id 是插入数据时使用指定的值替换服务端生成的唯一标识，$
 
 批量插入
 --------
+
 ::
   curl -H "content-type: application/json" -XPOST -d'
   {"index": {"_id": "v1"}}\n
@@ -68,7 +69,6 @@ $id 是插入数据时使用指定的值替换服务端生成的唯一标识，$
   ' http://router_server/$db_name/$space_name/_bulk
 
 json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "value", "feature": []} 指定插入的数据，每行json字符串均以\n结尾。
-
 
 更新
 --------
