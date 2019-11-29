@@ -19,9 +19,9 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'vs_cn'
-copyright = '2019, nizyun'
-author = 'nizyun'
+project = 'zh_docs'
+copyright = '2019, vearch'
+author = 'vearch'
 
 # The short X.Y version
 version = u''
