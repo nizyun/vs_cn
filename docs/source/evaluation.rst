@@ -53,8 +53,11 @@ Ncentroids 实验
 
 结果
 
+.. image:: pic/ncentroids.png
+   :align: center
+   :scale: 100 %
+   :alt: Architecture
 
-![ncentroids](/doc/img/benchs/ncentroids.png)
 
 可以看到召回基本不随ncentroids变化而变化，但是ncentroids越大，QPS越高。
 
@@ -66,7 +69,11 @@ Nbytes 实验
 结果
 
 
-![nbytes](/doc/img/benchs/nbytes.png)
+.. image:: pic/nbytes.png
+   :align: center
+   :scale: 100 %
+   :alt: Architecture
+
 
 当nbytes越大，召回越高，当然QPS随之降低。
 
@@ -169,8 +176,11 @@ VGG10M的召回 :
 
 结果
 
+.. image:: pic/cluster.png
+   :align: center
+   :scale: 100 %
+   :alt: Architecture
 
-![cluster](/doc/img/benchs/cluster.png)
 
 可以看到当average latency超过一定程度，QPS就不再发生明显变化了。
 
