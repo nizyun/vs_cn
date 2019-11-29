@@ -3,7 +3,7 @@
 
 
 基准
---------
+
 
 本文档显示了我们做的实验和得到的结果。我们做了两个系列的实验。首先，我们在单个节点上进行了基于faiss的改进的Vearch ivfpq模型的召回率实验。其次，基于Vearch 集群进行了实验。
 
@@ -13,70 +13,70 @@
 
 
 数据集
---------
+
 
 实验分别在128维SIFT特征和512维VGG特征上进行。
 
 数据集SIFT1M
---------
+
 
 可以从如下网址下载ANN_SIFT1M 
 
 http://corpus-texmex.irisa.fr/
 
 数据集VGG1M 和 VGG10M
---------
+
 
 分别收集100万和1000万的图片数据提取VGG特征得到VGG1M （100万）和VGG10M（1000万），其中VGG1M 和VGG10M并不相关。
 
 数据集VGG100M , VGG500M 和 VGG1B
---------
+
 
 另外收集了10亿图片数据来构建VGG100M(1亿) , VGG500M（5亿） 和 VGG1B（10亿）。
 
 Nprobe 实验
---------
+
 
 实验分别在SIFT1M, VGG1M 和 VGG10M上进行。其中ncentroids =256，nbytes = 32，nprobe  ∈{1,5,10,20,30,40,50,80,100,200}。图中数据为recall@1结果。
 
 结果
---------
+
 
 ![nprobe](/doc/img/benchs/nprobe.png)
 
 可以看到当nprobe超过25后，召回基本上没有明显的变化了。
 
 Ncentroids 实验
---------
+
 
 实验在VGG10M进行。其中nprobe = 50，nbytes = 32， ncentroids∈{64,128,256,512,1024,2048,4096,8192} 。图中数据为recall@1结果。
 
 结果
---------
+
 
 ![ncentroids](/doc/img/benchs/ncentroids.png)
 
 可以看到召回基本不随ncentroids变化而变化，但是ncentroids越大，QPS越高。
 
 Nbytes 实验
---------
+
 
 实验在VGG10M进行。其中nprobe = 50，ncentroids = 256， nbytes ∈{4,8,16,32,64}。图中数据为recall@1结果。
 
 结果
---------
+
 
 ![nbytes](/doc/img/benchs/nbytes.png)
 
 当nbytes越大，召回越高，当然QPS随之降低。
 
 对比实验
---------
+
 
 实验在 SIFT1M, VGG1M 和 VGG10M 上进行，并与faiss中的一些模型进行对比。
 
 模型参数
---------
+
 
 表格中参数为空，则对应模型不包含该参数。其中 links, efSearch 和 efConstruction 为 faiss 中的 hnsw 定义的参数。
 
@@ -100,7 +100,7 @@ Nbytes 实验
 
 
 结果
---------
+
 
 SIFT1M的召回:
 
@@ -174,18 +174,3 @@ VGG10M的召回 :
 
 可以看到当average latency超过一定程度，QPS就不再发生明显变化了。
 
-
-
-性能评估
-----------------
-
-.. image:: pic/cluster.png
-   :align: center
-   :scale: 100 %
-   :alt: Architecture
-
-
-.. image:: pic/ncentroids.png
-   :align: center
-   :scale: 100 %
-   :alt: Architecture
