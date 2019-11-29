@@ -35,7 +35,10 @@ http://corpus-texmex.irisa.fr/
 
 **结果**
 
-![nprobe](/doc/img/benchs/nprobe.png)
+.. image:: pic/nprobe.png
+   :align: center
+   :scale: 100 %
+   :alt: Architecture
 
 可以看到当nprobe超过25后，召回基本上没有明显的变化了。
 
