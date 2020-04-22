@@ -36,7 +36,8 @@ Vearch 系统介绍
 
    evaluate/effect.rst
    evaluate/performance.rst
-   
+   evaluate/hnsw.rst
+ 
 .. toctree::
       :maxdepth: 2
    :caption: 常见问题
