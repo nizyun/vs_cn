@@ -31,7 +31,7 @@ PartitionServer(PS): 基于raft复制的文档分片; Gamma向量搜索引擎,�
 
 3、支持数值字段范围过滤与string字段标签过滤。
 
-4、支持IVFPQ、HNSW、二进制等索引方式(HNSW、二进制方式在测试中)。
+4、支持IVFPQ、HNSW、二进制等索引方式(HNSW、二进制方式4月下旬发布)。
 
 5、支持Python SDK本地快速开发验证。
 
@@ -44,7 +44,7 @@ PartitionServer(PS): 基于raft复制的文档分片; Gamma向量搜索引擎,�
 
 2、支持内积(InnerProduct)与欧式距离(L2)方法计算向量距离。
 
-3、支持内存、磁盘、jimdb三种数据存储方式，支持超大数据规模(jimdb测试中)。
+3、支持内存、磁盘两种数据存储方式，支持超大数据规模。
 
 4、基于raft协议实现数据多副本存储。
 
