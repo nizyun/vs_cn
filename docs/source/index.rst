@@ -18,10 +18,11 @@ Vearch 系统介绍
    use_op/op_doc.rst
 
 
-... toctree::
+.. toctree::
        :maxdepth: 2
-   :caption: Python SDK
+   :caption: 扩展工具
    extend/pysdk.rst
+   extend/algorthm_plugin.rst
 
 .. toctree::
       :maxdepth: 1
