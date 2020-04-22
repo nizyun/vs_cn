@@ -33,9 +33,10 @@ Vearch 系统介绍
 .. toctree::
       :maxdepth: 2
    :caption: 测试评估
-   
-   evaluation
 
+   evaluate/effect.rst
+   evaluate/performance.rst
+   
 .. toctree::
       :maxdepth: 2
    :caption: 常见问题
