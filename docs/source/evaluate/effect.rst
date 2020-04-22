@@ -35,7 +35,7 @@ http://corpus-texmex.irisa.fr/
 
 **结果**
 
-.. image:: pic/nprobe.png
+.. image:: ../pic/nprobe.png
    :align: center
    :scale: 100 %
    :alt: Architecture
@@ -48,7 +48,7 @@ http://corpus-texmex.irisa.fr/
 
 **结果**
 
-.. image:: pic/ncentroids.png
+.. image:: ../pic/ncentroids.png
    :align: center
    :scale: 100 %
    :alt: Architecture
@@ -62,7 +62,7 @@ http://corpus-texmex.irisa.fr/
 
 **结果**
 
-.. image:: pic/nbytes.png
+.. image:: ../pic/nbytes.png
    :align: center
    :scale: 100 %
    :alt: Architecture

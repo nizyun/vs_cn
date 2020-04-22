@@ -5,7 +5,7 @@
 
 **结果**
 
-.. image:: pic/cluster.png
+.. image:: ../pic/cluster.png
    :align: center
    :scale: 100 %
    :alt: Architecture
