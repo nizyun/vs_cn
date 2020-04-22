@@ -17,15 +17,15 @@ Vearch 系统介绍
    use_op/op_space.rst
    use_op/op_doc.rst
 
-
 .. toctree::
        :maxdepth: 2
    :caption: 扩展工具
+
    extend/pysdk.rst
    extend/algorthm_plugin.rst
 
 .. toctree::
-      :maxdepth: 1
+      :maxdepth: 2
    :caption: 测试评估
    
    evaluation
