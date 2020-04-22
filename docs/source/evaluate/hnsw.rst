@@ -2,6 +2,7 @@ HNSW性能评测
 ----------------
 
 data_size = 10M, 参数为 InnerProduct, nlinks = 32, efConstruction = 40, efSearch = 64
+
 +-----------------------------------------+-------------+---------+--------------+
 |集群                                     |机器配置     |数据维度 |构建索引时间  |
 +=========================================+=============+=========+==============+
@@ -29,4 +30,5 @@ data_size = 10M, 参数为 InnerProduct, nlinks = 32, efConstruction = 40, efSea
    :align: center
    :scale: 100 %
    :alt: Architecture
+
 
