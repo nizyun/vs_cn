@@ -54,7 +54,6 @@ field1和field2是标量字段，field3是特征字段。所有字段名、值�
           "feature": [0.1, 0.2]
       }
   } 
-  
   ' http://router_server/$db_name/$space_name/$id
 
 $id 是插入数据时使用指定的值替换服务端生成的唯一标识，$id值不能使用url路径等特殊字符。若库中已存在该唯一标识的记录则覆盖。
