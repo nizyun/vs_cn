@@ -51,7 +51,7 @@ data_size = 10M, 参数为 InnerProduct, nlinks = 32, efConstruction = 40, efSea
 10M数据，机器配置56核256G，d = 512, add time = 33min10s，左侧是构建索引CPU利用率，右侧是搜索时CPU利用率
 
 .. image:: ../pic/hnsw512_cpu.png
-      :align: center
+   :align: center
    :scale: 100 %
    :alt: Architecture
 
@@ -77,7 +77,7 @@ data_size = 10M, 参数为 InnerProduct, nlinks = 32, efConstruction = 40, efSea
 构建索引时CPU使用率基本保持在100%， 搜索时cpu使用率，当并发数为50，100时，可以看到cpu使用率已经100%，故不做并发数1000/2000的对比实验
 
 .. image:: ../pic/hnsw8c_128_cpu.png
-         :align: center
+   :align: center
    :scale: 100 %
    :alt: Architecture
 
