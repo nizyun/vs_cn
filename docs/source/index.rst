@@ -37,6 +37,7 @@ Vearch 系统介绍
    evaluate/effect.rst
    evaluate/performance.rst
    evaluate/hnsw.rst
+   evaluate/gpu.rst
  
 .. toctree::
       :maxdepth: 2
