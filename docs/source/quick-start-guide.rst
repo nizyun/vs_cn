@@ -98,6 +98,8 @@
 
 -  启动
 
+启动vearch前，需要设置LD_LIBRARY_PATH环境变量的值，添加faiss, gamma, rocksdb等依赖的lib包(比如$vearch/ps/engine/gammacb/lib/lib、$FAISS_HOME/lib等目录下的lib包)。
+
 ::
 
    ./vearch -conf config.toml
