@@ -72,7 +72,7 @@ $id 是插入数据时使用指定的值替换服务端生成的唯一标识，$
   {"field1": "value", "field2": {"feature": []}}\n
   ' http://router_server/$db_name/$space_name/_bulk
 
-json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "value",  "field2": {"feature": []}} 指定插入的数据，每行json字符串均以\\n结尾。
+json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, _id值为空后台自动生成唯一id, {"field1": "value",  "field2": {"feature": []}} 指定插入的数据，每行json字符串均以\\n结尾。
 
 更新
 --------
@@ -81,13 +81,15 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, {"field1": "va
 
   curl -H "content-type: application/json" -XPOST -d'
   {
-      "doc": {
-          "int": 32
+      "field1": "value1",
+      "field2": "value2",
+      "field3": {
+          "feature": [0.1, 0.2]
       }
   }
   ' http://router_server/$db_name/$space_name/$id/_update
 
-请求路径中指定唯一标识$id，field是要修改的字段，向量字段的修改使用指定id插入的方式进行数据覆盖更新。
+请求路径中指定唯一标识$id，使用指定id插入的方式进行数据覆盖更新(后续可支持单个字段修改)。
 
 
 删除
