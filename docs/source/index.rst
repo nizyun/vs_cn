@@ -20,6 +20,7 @@ Vearch 系统介绍
 .. toctree::
       :maxdepth: 2
    :caption: GPU使用
+
    gpu/gpu_op.rst
 
 .. toctree::
