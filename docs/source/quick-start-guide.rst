@@ -7,7 +7,7 @@
 
 环境依赖
 
-1. 支持CentOS, Ubuntu and Mac OS。推荐CentOS 7.2以上， 支持cmake、make 命令。
+1. 支持CentOS, Ubuntu and Mac OS。推荐CentOS 7.2以上， 检查安装cmake、make工具。
 2. Go版本>=1.11.2。
 3. Gcc版本>=5。
 4. `Faiss <https://github.com/facebookresearch/faiss>`_ 版本>=v1.6.0(不建议使用最新的faiss版本)。
