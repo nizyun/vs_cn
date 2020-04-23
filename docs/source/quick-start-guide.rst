@@ -108,7 +108,8 @@
 
 
 
-#### 集群模式: > vearch has three module:
+集群模式:  
+vearch has three module:
 ``ps``\ (PartitionServer) , ``master``, ``router``, run
 ``./vearch -f config.toml ps/router/master`` start ps/router/master module
 
