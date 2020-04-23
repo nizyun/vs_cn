@@ -47,7 +47,7 @@
 部署
 --------
 
-以单机模式为例:
+单机模式:
 
 -  生成配置文件config.toml(master_server端口使用8817, router_server端口使用9001）
 ::
@@ -106,4 +106,82 @@
 
    ./vearch -conf config.toml
 
+
+
+#### 集群模式: > vearch has three module:
+``ps``\ (PartitionServer) , ``master``, ``router``, run
+``./vearch -f config.toml ps/router/master`` start ps/router/master module
+
+    Now we have five machine, two master, two ps and one router
+
+-  master
+
+   -  192.168.1.1
+   -  192.168.1.2
+
+-  ps
+
+   -  192.168.1.3
+   -  192.168.1.4
+
+-  router
+
+   -  192.168.1.5
+
+-  generate config file config.toml
+
+::
+
+    [global]
+        name = "vearch"
+        data = ["datas/"]
+        log = "logs/"
+        level = "info"
+        signkey = "vearch"
+        skip_auth = true
+
+    # if you are master, you'd better set all config for router、ps and router, ps use default config it so cool
+    [[masters]]
+        name = "m1"
+        address = "192.168.1.1"
+        api_port = 8817
+        etcd_port = 2378
+        etcd_peer_port = 2390
+        etcd_client_port = 2370
+    [[masters]]
+        name = "m2"
+        address = "192.168.1.2"
+        api_port = 8817
+        etcd_port = 2378
+        etcd_peer_port = 2390
+        etcd_client_port = 2370
+    [router]
+        port = 9001
+        skip_auth = true
+    [ps]
+        rpc_port = 8081
+        raft_heartbeat_port = 8898
+        raft_replicate_port = 8899
+        heartbeat-interval = 200 #ms
+        raft_retain_logs = 10000
+        raft_replica_concurrency = 1
+        raft_snap_concurrency = 1
+
+-  on 192.168.1.1 , 192.168.1.2 run master
+
+::
+
+    ./vearch -conf config.toml master
+
+-  on 192.168.1.3 , 192.168.1.4 run ps
+
+::
+
+    ./vearch -conf config.toml ps
+
+-  on 192.168.1.5 run router
+
+::
+
+    ./vearch -conf config.toml router
 
