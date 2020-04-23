@@ -128,7 +128,7 @@
 
    -  192.168.1.5
 
--  生成toml格式配置文件 config.toml
+-  生成toml格式配置文件 config.toml， 作为master的机器ip配置在[[masters]]中，支持多个，router和ps所在机器ip无需配置。
 
 ::
 
