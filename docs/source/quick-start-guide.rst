@@ -166,6 +166,8 @@ Now we have five machine, two master, two ps and one router
         raft_retain_logs = 10000
         raft_replica_concurrency = 1
         raft_snap_concurrency = 1
+        
+-  启动vearch前，设置LD_LIBRARY_PATH环境变量加载依赖包
 
 -  on 192.168.1.1 , 192.168.1.2 run master
 
