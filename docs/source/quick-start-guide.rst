@@ -110,9 +110,9 @@
 
 集群模式:  
 
-- vearch has three module: ``ps``\ (PartitionServer) , ``master``, ``router``, run ``./vearch -f config.toml ps/router/master`` start ps/router/master module
+- vearch 有三个模块: ``ps``, ``master``, ``router``, run ``./vearch -f config.toml ps/router/master`` 启动相应模块
 
-Now we have five machine, two master, two ps and one router
+假如有5台机器， 2台作为master管理， 2台作作为ps计算节点， 1台请求转发
 
 -  master
 
