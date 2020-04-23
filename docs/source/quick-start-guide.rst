@@ -27,19 +27,19 @@
 
 -  编译gamma
 
-   1. ``cd $vearch/engine/gamma/src``
+   1. ``cd $vearch/engine/gamma``
    2. ``mkdir build && cd build``
-   3. ``export Faiss_HOME=faiss安装路径``
-   4. ``cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$vearch/ps/engine/gammacb/lib ..``
-   5. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
+   3. ``export FAISS_HOME=faiss安装路径``
+   4. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
+   5. ``cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$vearch/ps/engine/gammacb/lib ..``
    6. ``make && make install``
 
 -  编译vearch
 
    1. ``cd $vearch``
-   2. ``export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$vearch/ps/engine/gammacb/lib/lib``
-   3. ``export Faiss_HOME=faiss安装路径``
-   4. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
+   2. ``export FAISS_HOME=faiss安装路径``
+   3. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
+   4. ``export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FAISS_HOME/lib:$vearch/ps/engine/gammacb/lib/lib`` 
    5. ``go build -a --tags=vector -o  vearch``
    
    生成\ ``vearch``\ 文件表示编译成功
@@ -100,78 +100,10 @@
 
 -  启动
 
-启动vearch前，需要设置LD_LIBRARY_PATH环境变量的值，添加faiss, gamma, rocksdb等依赖的lib包(比如$vearch/ps/engine/gammacb/lib/lib、$FAISS_HOME/lib等目录下的lib包)。
+启动vearch前，需要设置LD_LIBRARY_PATH环境变量的值，添加faiss, gamma, rocksdb等依赖的lib包(比如$vearch/ps/engine/gammacb/lib/lib、$FAISS_HOME/lib等目录下的lib包; 执行ldd vearch 和 ldd $vearch/ps/engine/gammacb/lib/lib/libgamma.so.0.1 命令可以查看vearch和gamma依赖的包)。
 
 ::
 
    ./vearch -conf config.toml
 
-#### 2 Cluster Model
-   > vearch has three module: `ps`(PartitionServer) , `master`, `router`, run `./vearch -f config.toml ps/router/master` start ps/router/master module
-
-   > Now we have five machine, two master, two ps and one router
-
-* master
-    * 192.168.1.1
-    * 192.168.1.2
-* ps
-    * 192.168.1.3
-    * 192.168.1.4
-* router
-    * 192.168.1.5
-* generate config file config.toml
-
-````
-[global]
-    name = "vearch"
-    data = ["datas/"]
-    log = "logs/"
-    level = "info"
-    signkey = "vearch"
-    skip_auth = true
-
-# if you are master you'd better set all config for router and ps and router and ps use default config it so cool
-[[masters]]
-    name = "m1"
-    address = "192.168.1.1"
-    api_port = 8817
-    etcd_port = 2378
-    etcd_peer_port = 2390
-    etcd_client_port = 2370
-[[masters]]
-    name = "m2"
-    address = "192.168.1.2"
-    api_port = 8817
-    etcd_port = 2378
-    etcd_peer_port = 2390
-    etcd_client_port = 2370
-[router]
-    port = 9001
-    skip_auth = true
-[ps]
-    rpc_port = 8081
-    raft_heartbeat_port = 8898
-    raft_replicate_port = 8899
-    heartbeat-interval = 200 #ms
-    raft_retain_logs = 10000
-    raft_replica_concurrency = 1
-    raft_snap_concurrency = 1
-````
-* on 192.168.1.1 , 192.168.1.2  run master
-
-````
-./vearch -conf config.toml master
-````
-
-* on 192.168.1.3 , 192.168.1.4 run ps
-
-````
-./vearch -conf config.toml ps
-````
-
-* on 192.168.1.5 run router
-
-````
-./vearch -conf config.toml router
-````
 
