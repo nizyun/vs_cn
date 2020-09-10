@@ -50,7 +50,7 @@ http://master_server代表master服务，$db_name是创建的库名, $space_name
           "field7": {
               "type": "vector",
               "dimension": 256,
-              "store_type": "RockDB",
+              "store_type": "RocksDB",
               "store_param": {
                   "store_param": 2048,
                   "compress": false
