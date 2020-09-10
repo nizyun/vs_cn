@@ -10,7 +10,7 @@
 1. 支持CentOS, Ubuntu and Mac OS。推荐CentOS 7.2以上， 检查安装cmake、make工具。
 2. Go版本>=1.11.2。
 3. Gcc版本>=5。
-4. `Faiss <https://github.com/facebookresearch/faiss>`_ 版本>=v1.6.0(不建议使用最新的faiss版本)。
+4. `Faiss <https://github.com/facebookresearch/faiss>`_ master分支(commit:833d417db1b6b6fd4b19e092f735373f07eab33f)。 
 5. 如果使用RocksDB， 版本6.2.2, 使用RocksDB中INSTALL.md文件的make shared_lib进行编译。
 6. 如果使用GPU, CUDA版本>=9.0
 
@@ -21,25 +21,25 @@
 -  下载源代码: ``git clone https://github.com/vearch/vearch.git`` (后续使用$vearch
    代表vearch目录绝对路径)
 
--  下载gamma代码: ``cd $vearch/engine`` ``git clone https://github.com/vearch/gamma.git``
+-  下载gamma代码: ``cd vearch`` ``git submodule update --init --recursive``
 
--  如果使用GPU版本, 修改$vearch/engine/gamma/CMakeLists.txt文件中BUILD_WITH_GPU值为on
+-  如果使用GPU版本, 修改$vearch/engine/CMakeLists.txt文件中BUILD_WITH_GPU值为on
 
 -  编译gamma
 
-   1. ``cd $vearch/engine/gamma``
+   1. ``cd $vearch/engine``
    2. ``mkdir build && cd build``
    3. ``export FAISS_HOME=faiss安装路径``
    4. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
    5. ``cmake -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX=$vearch/ps/engine/gammacb/lib ..``
-   6. ``make && make install``
+   6. ``make -j && make install``
 
 -  编译vearch
 
    1. ``cd $vearch``
    2. ``export FAISS_HOME=faiss安装路径``
    3. 如果使用RocksDB ``export ROCKSDB_HOME=RocksDB安装路径``
-   4. ``export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FAISS_HOME/lib:$vearch/ps/engine/gammacb/lib/lib`` 
+   4. ``export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$FAISS_HOME/lib:$ROCKSDB_HOME:$ROCKSDB_HOME/lib:$vearch/ps/engine/gammacb/lib/lib`` 
    5. ``go build -a --tags=vector -o  vearch``
    
    生成\ ``vearch``\ 文件表示编译成功
@@ -110,7 +110,7 @@
 
 集群模式:  
 
-- vearch 有三个模块: ``ps``, ``master``, ``router``, run ``./vearch -f config.toml ps/router/master`` 启动相应模块
+- vearch 有三个模块: ``ps``, ``master``, ``router``, run ``./vearch -conf config.toml ps/router/master`` 启动相应模块
 
 假如有5台机器， 2台作为master管理， 2台作为ps计算节点， 1台请求转发
 
