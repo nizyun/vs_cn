@@ -197,6 +197,8 @@ BINARYIVF:
   "retrieval_param": {
       "ncentroids": 256
   }
+  
+  注意: 1、向量长度是8的倍数
 
 properties配置:
 
