@@ -298,6 +298,7 @@ id查询
   }
   ' http://router_server/$db_name/$space_name/_query_byids
 
+
 ids指定多个id， fields 指定返回每条记录中那些字段
 
 
@@ -323,7 +324,8 @@ ids指定多个id， fields 指定返回每条记录中那些字段
       }
    }]
   ' http://router_server/$db_name/$space_name/_bulk_search
-  
+ 
+ 
  把多个单条查询的参数拼接成数组作为请求参数，返回结果和请求顺序保持一致。
 
 
@@ -358,6 +360,7 @@ ids指定多个id， fields 指定返回每条记录中那些字段
    }
    ' http://router_server/$db_name/$space_name/_query_byids_feature
    
+ 
  传入记录id， 首先查询出该记录的特征，然后再用特征进行查询，返回匹配结果。
 
 
