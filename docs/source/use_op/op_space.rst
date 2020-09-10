@@ -145,8 +145,8 @@ HNSW:
       "efConstruction": 40
   }
 
-  注意点: 1、向量存储只支持MemoryOnly
-          2、创建索引不需要训练，index_size 值大于0均可
+  注意: 1、向量存储只支持MemoryOnly
+        2、创建索引不需要训练，index_size 值大于0均可
 
 GPU（针对GPU编译版本）:
 
@@ -181,7 +181,7 @@ IVFFLAT:
       "ncentroids": 256
   }
   
- 注意点: 1、向量存储方式只支持RocksDB
+ 注意: 1、向量存储方式只支持RocksDB
 
 BINARYIVF:
 
