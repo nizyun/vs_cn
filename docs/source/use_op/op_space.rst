@@ -239,7 +239,7 @@ properties配置:
 
 cache_size: 数值类型，单位是M bytes，默认1024。store_type="RocksDB"时，它表示RocksDB的读缓冲大小，值越大读向量的性能越好，一般设置1024、2048、4096和6144即可；store_type="Mmap"时，它表示写缓冲的大小，不用太大，一般512、1024或2048即可；store_type="MemoryOnly"，它没有用。
 
-compress: bool类型，默认false。true表示对原始向量进行压缩，一般会将原始向量压缩为原来的50%，可以节省内存和磁盘；false表示不压缩。
+compress: bool类型，默认false。true表示对原始向量进行压缩，一般会将原始向量压缩为原来的50%，可以节省内存和磁盘；false表示不压缩；目前支持RocksDB和MemoryOnly， Mmap暂不支持。
 
 
 查看表空间
