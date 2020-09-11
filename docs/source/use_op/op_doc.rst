@@ -146,7 +146,7 @@ json格式的变体，{"index": {"_id": "v1"}} 指定记录的id, _id值为空�
           "nprobe": 20
       },
       "fields": ["field1", "field2"],
-      "direct_search_type": 0,
+      "is_brute_search": 0,
       "online_log_level": "debug",
       "quick": false,
       "vector_value": false,
