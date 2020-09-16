@@ -204,7 +204,7 @@ retrieval_param 参数指定模型计算时的参数，不同模型支持的参�
 
 - nprobe: 搜索桶数量。
 
-- recall_num: 召回数量，默认等于查询参数中size的值，设置从索引中搜索数量然后计算size个最相近的值。
+- recall_num: 召回数量，默认等于查询参数中size的值，设置从索引中搜索数量，然后计算size个最相近的值。
 
 - parallel_on_queries: 默认1， 搜索间并行；0代表桶间并行。
 
